@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <changeSet author="quinton (generated)" id="1337549115288-69">
+    <createTable tableName="channel_address">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="company_name" type="VARCHAR(100)"/>
+      <column name="recipient_name" type="VARCHAR(100)"/>
+      <column name="street_address_1" type="VARCHAR(100)"/>
+      <column name="street_address_2" type="VARCHAR(100)"/>
+      <column name="street_address_3" type="VARCHAR(100)"/>
+      <column name="city" type="VARCHAR(100)"/>
+      <column name="state" type="VARCHAR(100)"/>
+      <column name="zip_code" type="VARCHAR(100)"/>
+      <column name="country" type="VARCHAR(100)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-70">
+    <createTable tableName="channel_customer">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="customer_id" type="INT"/>
+      <column name="name" type="VARCHAR(100)"/>
+      <column name="company_name" type="VARCHAR(100)"/>
+      <column name="email" type="VARCHAR(100)"/>
+      <column name="phone_number" type="VARCHAR(100)"/>
+      <column name="channel_customer_id" type="VARCHAR(100)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-71">
+    <createTable tableName="channel_order">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="order_number" type="INT"/>
+      <column name="order_date" type="DATETIME"/>
+      <column name="channel_address_id" type="INT"/>
+      <column name="channel_customer_id" type="INT"/>
+      <column name="shipping_method" type="VARCHAR(50)"/>
+      <column name="shipping_cost" type="DECIMAL(10,2)"/>
+      <column name="channel" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="channel_order_id" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="channel_payment_id" type="INT"/>
+      <column name="currency" type="VARCHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="channel_order_status" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="fulfillment_method" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_update" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="products_mapped" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-72">
+    <createTable tableName="channel_order_line_item">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="channel_order_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="channel_order_line_item_id" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="product_id" type="INT"/>
+      <column name="product_description" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="channel_product_identifier" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="quantity" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="tax_rate" type="DECIMAL(10,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="price" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-73">
+    <createTable tableName="channel_payment">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="payment_method" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="payment_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="payment_amount" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="transaction_id" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="currency" type="VARCHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-272">
+    <addForeignKeyConstraint baseColumnNames="channel_address_id" baseTableName="channel_order"
+                             constraintName="channel_order_fk1"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="channel_address"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-273">
+    <addForeignKeyConstraint baseColumnNames="channel_customer_id" baseTableName="channel_order"
+                             constraintName="channel_order_fk2"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="channel_customer"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-274">
+    <addForeignKeyConstraint baseColumnNames="channel_payment_id" baseTableName="channel_order"
+                             constraintName="channel_order_fk3"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="channel_payment"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-275">
+    <addForeignKeyConstraint baseColumnNames="channel_order_id" baseTableName="channel_order_line_item"
+                             constraintName="channel_order_line_item_fk1"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="channel_order"
+        />
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-362">
+    <createIndex indexName="channel_order_uk1" tableName="channel_order" unique="true">
+      <column name="channel_order_id"/>
+      <column name="channel"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-363">
+    <createIndex indexName="channel_order_line_item_ik1" tableName="channel_order_line_item" unique="true">
+      <column name="channel_order_id"/>
+      <column name="channel_order_line_item_id"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-480">
+    <createView viewName="pending_channel_address">select a.id AS id,a.company_name AS
+      company_name,a.recipient_name AS recipient_name,a.street_address_1 AS
+      street_address_1,a.street_address_2 AS street_address_2,a.street_address_3 AS
+      street_address_3,a.city AS city,a.state AS state,a.zip_code AS zip_code,a.country AS
+      country from channel_address a where a.id in (select pending_channel_orders.channel_address_id
+      from pending_channel_orders)
+    </createView>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-481">
+    <createView viewName="pending_channel_customer">select a.id AS id,a.customer_id AS
+      customer_id,a.name AS name,a.company_name AS company_name,a.email AS email,a.phone_number
+      AS phone_number,a.channel_customer_id AS channel_customer_id from channel_customer a where
+      a.id in (select pending_channel_orders.channel_customer_id from pending_channel_orders)
+    </createView>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-482">
+    <createView viewName="pending_channel_order_line_item">select a.id AS id,a.channel_order_id AS
+      channel_order_id,a.channel_order_line_item_id AS channel_order_line_item_id,a.product_id AS
+      product_id,a.product_description AS product_description,a.channel_product_identifier AS
+      channel_product_identifier,a.quantity AS quantity,a.tax_rate AS tax_rate,a.price AS price from
+      channel_order_line_item a where a.channel_order_id in (select pending_channel_orders.id from
+      pending_channel_orders)
+    </createView>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-483">
+    <createView viewName="pending_channel_orders">select channel_order.id AS
+      id,channel_order.order_number AS order_number,channel_order.order_date AS
+      order_date,channel_order.channel_address_id AS
+      channel_address_id,channel_order.channel_customer_id AS
+      channel_customer_id,channel_order.shipping_method AS
+      shipping_method,channel_order.shipping_cost AS shipping_cost,channel_order.channel AS
+      channel,channel_order.channel_order_id AS
+      channel_order_id,channel_order.channel_payment_id AS
+      channel_payment_id,channel_order.currency AS currency,channel_order.channel_order_status
+      AS channel_order_status,channel_order.fulfillment_method AS
+      fulfillment_method,channel_order.last_update AS last_update,channel_order.products_mapped
+      AS products_mapped from channel_order where (isnull(channel_order.order_number) and
+      (channel_order.channel_order_status not in ('CANCELED','UNPAID')) and
+      (channel_order.fulfillment_method &lt;&gt; 'CHANNEL'))
+    </createView>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-484">
+    <createView viewName="pending_channel_payment">select a.id AS id,a.payment_method AS
+      payment_method,a.payment_date AS payment_date,a.payment_amount AS
+      payment_amount,a.transaction_id AS transaction_id,a.currency AS currency from
+      channel_payment a where a.id in (select pending_channel_orders.channel_payment_id from
+      pending_channel_orders)
+    </createView>
+  </changeSet>
+
+</databaseChangeLog>

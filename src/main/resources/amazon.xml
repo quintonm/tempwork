@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <preConditions>
+    <not>
+      <or>
+        <indexExists indexName="ws_product_group_UNIQUE"/>
+      </or>
+    </not>
+  </preConditions>
+
+  <changeSet author="quinton (generated)" id="1337549115288-36">
+    <createTable tableName="amazon_listings">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="top_category" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="products_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="sku" type="VARCHAR(40)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="title" type="VARCHAR(500)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="brand" type="VARCHAR(50)"/>
+      <column name="description" type="TEXT"/>
+      <column name="item_price" type="DECIMAL (10,2)"/>
+      <column name="condition_note" type="TEXT"/>
+      <column name="item_type" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_update" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="asin" type="VARCHAR(45)"/>
+      <column defaultValueNumeric="1" name="active" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="notes" type="TEXT"/>
+      <column name="amz_product_type_name" type="VARCHAR(100)"/>
+      <column name="amz_sales_rank" type="INT"/>
+      <column name="amz_detail_page_url" type="VARCHAR(255)"/>
+      <column name="last_item_data_download" type="DATETIME"/>
+      <column name="min_price" type="DECIMAL(10,2)"/>
+      <column name="max_price" type="DECIMAL(10,2)"/>
+      <column name="amz_binding" type="VARCHAR(255)"/>
+      <column name="amz_brand" type="VARCHAR(255)"/>
+      <column name="amz_manufacturer" type="VARCHAR(255)"/>
+      <column name="amz_model" type="VARCHAR(255)"/>
+      <column name="amz_mpn" type="VARCHAR(255)"/>
+      <column name="amz_package_quantity" type="INT"/>
+      <column name="amz_product_type_subcategory" type="VARCHAR(255)"/>
+      <column name="amz_sku" type="VARCHAR(255)"/>
+      <column name="amz_title" type="VARCHAR(500)"/>
+      <column name="amz_upc" type="VARCHAR(12)"/>
+      <column name="amz_list_price" type="DECIMAL(10,2)"/>
+      <column name="estimated_shipping_cost" type="DECIMAL(10,2)"/>
+      <column name="commission" type="DECIMAL(10,2)"/>
+      <column name="actual_shipping_price" type="DECIMAL(10,2)"/>
+      <column name="estimated_profit" type="DECIMAL(10,2)"/>
+      <column name="offer_rank" type="INT"/>
+      <column name="last_reprice_date" type="DATETIME"/>
+      <column name="ws_product_group_id" type="INT UNSIGNED"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-37">
+    <createTable tableName="amazon_merchant_offers">
+      <column name="offer_id" type="VARCHAR(200)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="seller_id" type="VARCHAR(14)"/>
+      <column name="price" type="DECIMAL(10,2)"/>
+      <column name="shipping" type="DECIMAL(10,2)"/>
+      <column name="listing_id" type="INT UNSIGNED"/>
+      <column name="average_feedback" type="DECIMAL(3,1)"/>
+      <column name="total_feedback" type="INT UNSIGNED"/>
+      <column name="item_condition" type="VARCHAR(20)"/>
+      <column name="availability" type="VARCHAR(20)"/>
+      <column name="item_condition_note" type="TEXT"/>
+      <column name="seller_name" type="VARCHAR(255)"/>
+      <column name="quantity" type="INT UNSIGNED"/>
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-38">
+    <createTable tableName="amazon_product_groups">
+      <column name="product_group_name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="referral_fee_percentage" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="variable_closing_fee" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-39">
+    <createTable tableName="amazon_settlement">
+      <column defaultValue="0" name="settlement_id" type="VARCHAR(15)">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="settlement_start_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="settlement_end_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="deposit_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.00" name="total_amount" type="DECIMAL (10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="currency" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="transaction_fees" type="DECIMAL(10,2)"/>
+      <column defaultValueNumeric="0" name="reconsiled" type="TINYINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-40">
+    <createTable tableName="amazon_settlement_detail">
+      <column defaultValue="0" name="settlement_id" type="VARCHAR(15)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="order_id" type="VARCHAR(255)"/>
+      <column name="transaction_type" type="VARCHAR(255)"/>
+      <column name="adjustment_id" type="VARCHAR(255)"/>
+      <column name="merchant_order_id" type="INT"/>
+      <column name="marketplace_name" type="VARCHAR(255)"/>
+      <column name="shipment_id" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="shipment_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="shipment_fee_type" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="order_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="order_fee_type" type="VARCHAR(255)"/>
+      <column name="fulfillment_id" type="VARCHAR(255)"/>
+      <column name="order_item_code" type="VARCHAR(255)"/>
+      <column name="posted_date" type="DATETIME"/>
+      <column name="merchant_adjustment_item_id" type="VARCHAR(255)"/>
+      <column name="merchant_order_item_id" type="VARCHAR(255)"/>
+      <column name="quantity_purchased" type="INT UNSIGNED"/>
+      <column name="sku" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="price_amount" type="DECIMAL(10,2)"/>
+      <column name="price_type" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="item_related_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="item_related_fee_type" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="misc_fee_amount" type="DECIMAL(10,2)"/>
+      <column defaultValueNumeric="0.00" name="other_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="other_fee_reason_description" type="VARCHAR(255)"/>
+      <column name="promotion_id" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="promotion_amount" type="DECIMAL(10,2)"/>
+      <column name="promotion_type" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0.00" name="direct_payment_amount" type="DECIMAL(10,2)"/>
+      <column name="direct_payment_type" type="VARCHAR(255)"/>
+      <column autoIncrement="true" name="ID" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0.00" name="other_amount" type="DECIMAL(10,2)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-41">
+    <createTable tableName="amazon_settlement_detail_summary">
+      <column defaultValue="0" name="settlement_id" type="VARCHAR(15)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="order_id" type="VARCHAR(255)"/>
+      <column name="transaction_type" type="VARCHAR(255)"/>
+      <column name="merchant_order_id" type="INT"/>
+      <column name="order_item_code" type="VARCHAR(255)"/>
+      <column name="posted_date" type="DATETIME"/>
+      <column name="merchant_order_item_id" type="VARCHAR(255)"/>
+      <column name="price_amount" type="DECIMAL(10,2)"/>
+      <column name="item_related_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="misc_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="other_fee_amount" type="DECIMAL(10,2)"/>
+      <column name="promotion_amount" type="DECIMAL(10,2)"/>
+      <column name="direct_payment_amount" type="DECIMAL(10,2)"/>
+      <column name="other_amount" type="DECIMAL(10,2)"/>
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="final_order_total" type="DECIMAL(10,2)"/>
+      <column name="total_purchase_price" type="DECIMAL(10,2)"/>
+      <column name="order_fees" type="DECIMAL(10,2)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-42">
+    <createTable tableName="amazon_shipping_overrides">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0" name="amazon_listing_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ship_option" type="VARCHAR(40)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.00" name="shipping_amount" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="'Exclusive'" name="override_type" type="enum('Additive','Exclusive')">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueBoolean="false" name="restricted" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-43">
+    <createTable tableName="amazon_shipping_settings">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="ship_option" type="VARCHAR(40)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.00" name="per_shipment" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.00" name="per_pound" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-44">
+    <createTable tableName="amazon_sync_status">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="sync_type" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_sync_time_utc" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-45">
+    <createTable tableName="amazon_ws_product_group">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="group_name" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="product_group_id" type="INT UNSIGNED"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-264">
+    <addForeignKeyConstraint baseColumnNames="ws_product_group_id" baseTableName="amazon_listings"
+                             constraintName="ws_product_group_fk"
+
+                             referencedColumnNames="id" referencedTableName="amazon_ws_product_group"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-265">
+    <addForeignKeyConstraint baseColumnNames="listing_id" baseTableName="amazon_merchant_offers"
+                             constraintName="listing_fk"
+                             onDelete="CASCADE" onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="amazon_listings"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-266">
+    <addForeignKeyConstraint baseColumnNames="product_group_id" baseTableName="amazon_ws_product_group"
+                             constraintName="product_group_fk"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="amazon_product_groups"
+        />
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-347">
+    <createIndex indexName="asin" tableName="amazon_listings" unique="false">
+      <column name="asin"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-348">
+    <createIndex indexName="last_item_download" tableName="amazon_listings" unique="false">
+      <column name="last_item_data_download"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-349">
+    <createIndex indexName="products_id" tableName="amazon_listings" unique="false">
+      <column name="products_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-350">
+    <createIndex indexName="sku" tableName="amazon_listings" unique="true">
+      <column name="sku"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-351">
+    <createIndex indexName="offer_id_UNIQUE" tableName="amazon_merchant_offers" unique="true">
+      <column name="offer_id"/>
+      <column name="listing_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-352">
+    <createIndex indexName="amazon_listing_fk" tableName="amazon_shipping_overrides" unique="false">
+      <column name="amazon_listing_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-353">
+    <createIndex indexName="locale_type" tableName="amazon_shipping_settings" unique="true">
+      <column name="ship_option"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-354">
+    <createIndex indexName="amazon_sync_status_uk" tableName="amazon_sync_status" unique="true">
+      <column name="sync_type"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-355">
+    <createIndex indexName="ws_product_group_UNIQUE" tableName="amazon_ws_product_group" unique="true">
+      <column name="group_name"/>
+    </createIndex>
+  </changeSet>
+
+
+
+
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+#################
+## Intellij
+#################
+.idea
+*.iml
+atlassian-ide-plugin.xml
+
+#################
+## other files
+#################
+debug.log
+cre.sql

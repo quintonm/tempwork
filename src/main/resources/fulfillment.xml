@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <preConditions>
+    <not>
+      <or>
+        <viewExists viewName="pending_channel_payment"/>
+      </or>
+    </not>
+  </preConditions>
+
+  <changeSet author="quinton (generated)" id="1337549115288-113">
+    <createTable tableName="invload_albany_plantronics">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="mfg_part_num" type="VARCHAR(45)"/>
+      <column name="description" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0" name="qty_available" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="IN STOCK" name="inventory_status" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_part_num" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="cost" type="DECIMAL(10,2)"/>
+      <column name="last_update" type="DATETIME"/>
+      <column defaultValueNumeric="0" name="active" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-114">
+    <createTable tableName="invload_catalyst">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="mfg_name" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="mfg_part_num" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="image_url" type="VARCHAR(255)"/>
+      <column name="title" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(2000)"/>
+      <column defaultValueNumeric="0" name="qty_available" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="IN STOCK" name="inventory_status" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_part_num" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="msrp" type="DECIMAL(10,2)"/>
+      <column name="cost" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="weight" type="DECIMAL(10,4)"/>
+      <column name="last_update" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="active" type="TINYINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-115">
+    <createTable tableName="invload_dbl">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="restricted" type="CHAR(1)"/>
+      <column name="burst" type="VARCHAR(45)"/>
+      <column name="msrp" type="DECIMAL(10,2)"/>
+      <column name="map" type="DECIMAL(10,2)"/>
+      <column name="price_note" type="VARCHAR(255)"/>
+      <column name="brand_logo" type="VARCHAR(255)"/>
+      <column name="headline" type="TEXT"/>
+      <column name="packing_slip_descr" type="VARCHAR(65)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="bullet_points" type="TEXT"/>
+      <column name="mfg_url" type="VARCHAR(500)"/>
+      <column name="upc" type="VARCHAR(13)"/>
+      <column name="length" type="DECIMAL(10,2)"/>
+      <column name="width" type="DECIMAL(10,2)"/>
+      <column name="height" type="DECIMAL(10,2)"/>
+      <column name="image1" type="TEXT"/>
+      <column name="image2" type="TEXT"/>
+      <column name="image3" type="TEXT"/>
+      <column name="image4" type="TEXT"/>
+      <column name="image5" type="TEXT"/>
+      <column name="image6" type="TEXT"/>
+      <column name="image7" type="TEXT"/>
+      <column name="image8" type="TEXT"/>
+      <column name="image9" type="TEXT"/>
+      <column name="image10" type="TEXT"/>
+      <column name="image11" type="TEXT"/>
+      <column name="vendor_part_num" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_update" type="DATETIME"/>
+      <column name="weight" type="DECIMAL(10,3)"/>
+      <column name="cost" type="DECIMAL(10,2)"/>
+      <column defaultValueNumeric="0" name="qty_available" type="INT"/>
+      <column defaultValueNumeric="0" name="qty_backordered" type="INT"/>
+      <column defaultValueNumeric="0" name="qty_in_transit" type="INT"/>
+      <column name="segment" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="category" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="content_group" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="brand" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="active" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-116">
+    <createTable tableName="invload_hypercel_cat2cat">
+      <column defaultValueNumeric="0" name="list_type" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ref_1" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ref_2" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="active" type="INT"/>
+      <column name="last_update" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-117">
+    <createTable tableName="invload_hypercel_category">
+      <column defaultValue="" name="category_code" type="VARCHAR(45)">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="category_name" type="VARCHAR(45)"/>
+      <column name="categories_parent_category" type="VARCHAR(45)"/>
+      <column name="is_category_active" type="VARCHAR(1)"/>
+      <column name="is_category_web_active" type="VARCHAR(1)"/>
+      <column name="thumbnail_image" type="VARCHAR(100)"/>
+      <column name="full_size_image" type="VARCHAR(100)"/>
+      <column name="description" type="VARCHAR(2000)"/>
+      <column name="phone_name" type="VARCHAR(45)"/>
+      <column name="rank_order" type="VARCHAR(45)"/>
+      <column name="manufacturer_code" type="VARCHAR(45)"/>
+      <column name="lifestyle_image" type="VARCHAR(100)"/>
+      <column name="page_title" type="VARCHAR(45)"/>
+      <column name="slogan" type="VARCHAR(45)"/>
+      <column name="url" type="VARCHAR(100)"/>
+      <column name="phone_supports_bluetooth" type="VARCHAR(1)"/>
+      <column name="new_category" type="VARCHAR(1)"/>
+      <column name="nofolow_to_the_link" type="VARCHAR(1)"/>
+      <column name="used_in_feed" type="VARCHAR(1)"/>
+      <column name="phone_weight_in_oz" type="FLOAT(10,4)"/>
+      <column name="phone_height_in_mm" type="FLOAT(10,4)"/>
+      <column name="phone_width_in_mm" type="FLOAT(10,4)"/>
+      <column name="phone_depth_in_mm" type="FLOAT(10,4)"/>
+      <column name="max_memory_gb" type="FLOAT(10,4)"/>
+      <column name="rankorder" type="VARCHAR(45)"/>
+      <column name="maximum_memory_in_gigs" type="FLOAT(10,4)"/>
+      <column name="menu_id" type="VARCHAR(45)"/>
+      <column name="special_items_order" type="VARCHAR(45)"/>
+      <column name="html_page_title" type="VARCHAR(100)"/>
+      <column name="html_meta_keywords" type="VARCHAR(2000)"/>
+      <column name="meta_description" type="VARCHAR(2000)"/>
+      <column name="lifestyle_text" type="VARCHAR(2000)"/>
+      <column name="active" type="INT"/>
+      <column name="last_update" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-118">
+    <createTable tableName="invload_hypercel_price">
+      <column defaultValue="" name="item_no" type="VARCHAR(45)">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="msrp" type="FLOAT(10,2)"/>
+      <column name="cost" type="FLOAT(10,2)"/>
+      <column name="map" type="FLOAT(10,2)"/>
+      <column name="active" type="INT"/>
+      <column name="last_update" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-119">
+    <createTable tableName="invload_hypercel_product">
+      <column name="product_title" type="VARCHAR(255)"/>
+      <column name="web_description" type="VARCHAR(20000)"/>
+      <column name="image_link" type="VARCHAR(100)"/>
+      <column name="product_link" type="VARCHAR(100)"/>
+      <column defaultValue="" name="part_number" type="VARCHAR(45)">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="product_weight" type="FLOAT(7,4)"/>
+      <column name="category" type="VARCHAR(45)"/>
+      <column name="parent_category" type="VARCHAR(45)"/>
+      <column name="manufacturer" type="VARCHAR(45)"/>
+      <column name="shipping_country" type="VARCHAR(3)"/>
+      <column name="shipping_state" type="VARCHAR(2)"/>
+      <column name="quantity_on_hand" type="INT"/>
+      <column name="shipping_method" type="VARCHAR(6)"/>
+      <column name="shipping_cost" type="FLOAT(10,2)"/>
+      <column name="tax_country" type="VARCHAR(3)"/>
+      <column name="tax_state" type="VARCHAR(2)"/>
+      <column name="tax_amount" type="FLOAT(10,2)"/>
+      <column name="use_tax" type="VARCHAR(1)"/>
+      <column name="msrp" type="FLOAT(10,2)"/>
+      <column name="cost" type="FLOAT(10,2)"/>
+      <column name="price" type="FLOAT(10,2)"/>
+      <column name="active" type="INT"/>
+      <column name="last_update" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-120">
+    <createTable tableName="invload_teledynamics">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="vendor_part_num" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="title" type="VARCHAR(65)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="cost" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="map" type="DECIMAL(10,2)"/>
+      <column defaultValueNumeric="0" name="qty_available" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="weight" type="DECIMAL(10,3)"/>
+      <column name="upc" type="VARCHAR(45)"/>
+      <column name="description" type="TEXT"/>
+      <column name="last_update" type="DATETIME"/>
+      <column name="image" type="TEXT"/>
+      <column name="product_line" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="main_category" type="VARCHAR(255)"/>
+      <column name="sub_category" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="active" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-121">
+    <createTable tableName="invload_wynit">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="msrp" type="DECIMAL(10,2)"/>
+      <column name="description" type="TEXT"/>
+      <column name="upc" type="VARCHAR(13)"/>
+      <column name="length" type="DECIMAL(10,2)"/>
+      <column name="width" type="DECIMAL(10,2)"/>
+      <column name="height" type="DECIMAL(10,2)"/>
+      <column name="vendor_part_num" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_update" type="DATETIME"/>
+      <column name="weight" type="DECIMAL(10,3)"/>
+      <column name="cost" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="qty_available" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="title" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="ca_qty_available" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="ny_qty_available" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="tn_qty_available" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="product_line" type="VARCHAR(255)"/>
+      <column name="product_model" type="VARCHAR(255)"/>
+      <column name="product_image_url" type="VARCHAR(255)"/>
+      <column name="mfg_part_num" type="VARCHAR(255)"/>
+      <column name="vendor" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="category" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="active" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-169">
+    <createTable tableName="purchase_orders">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="po_number" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="orders_id" type="INT"/>
+      <column defaultValueNumeric="0" name="vendor_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="order_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_order_number" type="VARCHAR(45)"/>
+      <column name="notes" type="TEXT"/>
+      <column name="carrier" type="VARCHAR(45)"/>
+      <column name="method" type="VARCHAR(45)"/>
+      <column name="ship_date" type="DATETIME"/>
+      <column name="tracking" type="TEXT"/>
+      <column name="special_instructions" type="TEXT"/>
+      <column name="send_date" type="DATETIME"/>
+      <column name="shipping_cost" type="DECIMAL(10,2)"/>
+      <column name="ship_from_location" type="VARCHAR(45)"/>
+      <column defaultValueNumeric="0" name="status_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ship_address" type="TEXT"/>
+      <column defaultValueNumeric="0" name="quickbooks" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ship_name" type="VARCHAR(60)"/>
+      <column name="ship_company" type="VARCHAR(60)"/>
+      <column name="ship_address_1" type="VARCHAR(60)"/>
+      <column name="ship_address_2" type="VARCHAR(60)"/>
+      <column name="ship_city" type="VARCHAR(45)"/>
+      <column name="ship_state" type="VARCHAR(45)"/>
+      <column name="ship_zipcode" type="VARCHAR(10)"/>
+      <column name="ship_country" type="VARCHAR(60)"/>
+      <column name="ship_phone" type="VARCHAR(30)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-170">
+    <createTable tableName="purchase_orders_products">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="purchase_orders_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="products_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_part_number" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_description" type="TEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="cost" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="quantity" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="products_model" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-171">
+    <createTable tableName="purchase_orders_status">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="name" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-191">
+    <createTable tableName="sequences">
+      <column defaultValue="" name="sequence_name" type="VARCHAR(45)">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0" name="sequence_value" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-193">
+    <createTable tableName="shipping_carrier">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(30)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-194">
+    <createTable tableName="shipping_method">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="shipping_carrier_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="code" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="max_weight" type="DECIMAL(8,3)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="domestic" type="TINYINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="international" type="TINYINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(30)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="max_delivery_days" type="INT"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-195">
+    <createTable tableName="shipping_rate">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="shipping_method_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="min_weight" type="DECIMAL(8,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="max_weight" type="DECIMAL(8,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="cost" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-209">
+    <createTable tableName="vendor">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="name" type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="notes" type="LONGTEXT"/>
+      <column name="last_update" type="DATETIME"/>
+      <column name="default_shipping_carrier" type="VARCHAR(45)"/>
+      <column name="default_shipping_method" type="VARCHAR(45)"/>
+      <column defaultValueNumeric="0.00" name="per_order_fee" type="DECIMAL(10,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="qb_name" type="VARCHAR(40)"/>
+      <column name="invload_orm_name" type="VARCHAR(255)"/>
+      <column defaultValue="'DEFAULT'" name="auto_create" type="enum('YES','NO','DEFAULT')">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-210">
+    <createTable tableName="vendor_category">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="category_1" type="VARCHAR(80)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="category_2" type="VARCHAR(80)"/>
+      <column name="category_3" type="VARCHAR(80)"/>
+      <column name="category_4" type="VARCHAR(80)"/>
+      <column name="category_5" type="VARCHAR(80)"/>
+      <column name="cre_category_id" type="INT"/>
+      <column defaultValueNumeric="0" name="vendor_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_update" type="DATETIME"/>
+      <column defaultValue="'DEFAULT'" name="auto_create" type="enum('YES','NO','DEFAULT')">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-212">
+    <createTable tableName="vendor_item">
+      <column autoIncrement="true" name="ID" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0" name="vendor_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="cre_id" type="INT"/>
+      <column defaultValue="" name="vendor_part_num" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="mfg_part_num" type="VARCHAR(255)"/>
+      <column name="mfg_model_num" type="VARCHAR(255)"/>
+      <column name="normal_cost" type="DOUBLE"/>
+      <column name="sale_cost" type="DOUBLE"/>
+      <column name="sale_end_date" type="DATETIME"/>
+      <column defaultValue="" name="title" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="MEDIUMTEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="warranty" type="VARCHAR(20)"/>
+      <column name="msrp" type="DOUBLE"/>
+      <column name="notes" type="MEDIUMTEXT"/>
+      <column name="map_price" type="DOUBLE"/>
+      <column name="upc" type="VARCHAR(13)"/>
+      <column name="length" type="FLOAT"/>
+      <column name="width" type="FLOAT"/>
+      <column name="height" type="FLOAT"/>
+      <column name="weight" type="FLOAT"/>
+      <column name="image_1" type="VARCHAR(255)"/>
+      <column name="image_2" type="VARCHAR(255)"/>
+      <column name="image_3" type="VARCHAR(255)"/>
+      <column name="image_4" type="VARCHAR(255)"/>
+      <column name="image_5" type="VARCHAR(255)"/>
+      <column name="image_6" type="VARCHAR(255)"/>
+      <column name="image_7" type="VARCHAR(255)"/>
+      <column name="image_8" type="VARCHAR(255)"/>
+      <column name="image_9" type="VARCHAR(255)"/>
+      <column name="image_10" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0" name="qty_available" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="qty_ordered" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="stock_eta" type="DATETIME"/>
+      <column defaultValueComputed="CURRENT_TIMESTAMP" name="last_update" type="TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueBoolean="true" name="upload_inventory" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="vendor_category_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="vendor_manufacturer_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueBoolean="false" name="discontinued" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="'DEFAULT'" name="auto_create" type="enum('YES','NO','DEFAULT')">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_message" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="0" name="active" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-213">
+    <createTable tableName="vendor_manufacturer">
+      <column autoIncrement="true" name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0" name="vendor_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="manufacturer_name" remarks="manufacturer name (as it will appear in "
+              type="VARCHAR(45)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="cre_manufacturer_id" type="INT"/>
+      <column name="last_update" type="DATETIME"/>
+      <column defaultValue="'DEFAULT'" name="auto_create" type="enum('YES','NO','DEFAULT')">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-214">
+    <createTable tableName="vendor_shipping_method">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="shipping_method_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vendor_id" type="INT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="code" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+
+
+  <changeSet author="quinton (generated)" id="1337549115288-283">
+    <addForeignKeyConstraint baseColumnNames="orders_id" baseTableName="purchase_orders" baseTableSchemaName="cre"
+                             constraintName="FK_purchase_orders_orders"  initiallyDeferred="false"
+                             onUpdate="NO ACTION" referencedColumnNames="orders_id"
+                             referencedTableName="orders" referencedTableSchemaName="cre"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-284">
+    <addForeignKeyConstraint baseColumnNames="vendor_id" baseTableName="purchase_orders" baseTableSchemaName="cre"
+                             constraintName="FK_purchase_orders_vendor"  initiallyDeferred="false"
+                             onUpdate="NO ACTION" referencedColumnNames="id"
+                             referencedTableName="vendor" referencedTableSchemaName="cre"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-285">
+    <addForeignKeyConstraint baseColumnNames="products_id" baseTableName="purchase_orders_products"
+                             constraintName="FK_purchase_orders_products_prod"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="products_id" referencedTableName="products"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-286">
+    <addForeignKeyConstraint baseColumnNames="purchase_orders_id" baseTableName="purchase_orders_products"
+                             constraintName="FK_purchase_orders_products_po"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="purchase_orders"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-287">
+    <addForeignKeyConstraint baseColumnNames="shipping_carrier_id" baseTableName="shipping_method"
+                             constraintName="shipping_method_carrier_fk"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="shipping_carrier"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-288">
+    <addForeignKeyConstraint baseColumnNames="shipping_method_id" baseTableName="shipping_rate"
+                             constraintName="shipping_rate_method_fk"
+                             onUpdate="NO ACTION"
+                             referencedColumnNames="id" referencedTableName="shipping_method"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-278">
+    <addForeignKeyConstraint baseColumnNames="vendor_item_id" baseTableName="products"
+                             constraintName="FK_products_vi"  initiallyDeferred="false"
+                             referencedColumnNames="ID"
+                             referencedTableName="vendor_item"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-289">
+    <addForeignKeyConstraint baseColumnNames="cre_category_id" baseTableName="vendor_category"
+                             constraintName="FK_vendor_category_cat"  initiallyDeferred="false"
+                             referencedColumnNames="categories_id"
+                             referencedTableName="categories"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-290">
+    <addForeignKeyConstraint baseColumnNames="vendor_id" baseTableName="vendor_category"
+                             constraintName="FK_vendor_category_vendor"  initiallyDeferred="false"
+                             referencedColumnNames="id"
+                             referencedTableName="vendor"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-291">
+    <addForeignKeyConstraint baseColumnNames="cre_id" baseTableName="vendor_item"
+                             constraintName="FK_vendor_item_creid"  initiallyDeferred="false"
+                             referencedColumnNames="products_id"
+                             referencedTableName="products"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-292">
+    <addForeignKeyConstraint baseColumnNames="vendor_category_id" baseTableName="vendor_item"
+                             constraintName="FK_vendor_item_vc"  initiallyDeferred="false"
+                             referencedColumnNames="id"
+                             referencedTableName="vendor_category"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-293">
+    <addForeignKeyConstraint baseColumnNames="vendor_id" baseTableName="vendor_item"
+                             constraintName="FK_vendor_item_vendor"  initiallyDeferred="false"
+                             referencedColumnNames="id"
+                             referencedTableName="vendor"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-294">
+    <addForeignKeyConstraint baseColumnNames="vendor_manufacturer_id" baseTableName="vendor_item"
+                             constraintName="FK_vendor_item_venman"
+
+                             referencedColumnNames="id" referencedTableName="vendor_manufacturer"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-295">
+    <addForeignKeyConstraint baseColumnNames="cre_manufacturer_id" baseTableName="vendor_manufacturer"
+                             constraintName="FK_vendor_manufacturer_mfg"
+
+                             referencedColumnNames="manufacturers_id" referencedTableName="manufacturers"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-296">
+    <addForeignKeyConstraint baseColumnNames="vendor_id" baseTableName="vendor_manufacturer"
+                             constraintName="FK_vendor_manufacturer_ven"  initiallyDeferred="false"
+                             referencedColumnNames="id"
+                             referencedTableName="vendor"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-297">
+    <addForeignKeyConstraint baseColumnNames="shipping_method_id" baseTableName="vendor_shipping_method"
+                             constraintName="ven_ship_method_sm_fk"
+
+                             referencedColumnNames="id" referencedTableName="shipping_method"
+        />
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-298">
+    <addForeignKeyConstraint baseColumnNames="vendor_id" baseTableName="vendor_shipping_method"
+                             constraintName="ven_ship_method_vendor_fk"
+
+                             referencedColumnNames="id" referencedTableName="vendor"
+        />
+  </changeSet>
+
+
+  <changeSet author="quinton (generated)" id="1337549115288-238">
+    <addPrimaryKey columnNames="list_type, ref_1, ref_2" tableName="invload_hypercel_cat2cat"/>
+  </changeSet>
+
+
+  <changeSet author="quinton (generated)" id="1337549115288-375">
+    <createIndex indexName="vendor_part" tableName="invload_albany_plantronics" unique="true">
+      <column name="vendor_part_num"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-376">
+    <createIndex indexName="vendor_part" tableName="invload_catalyst" unique="true">
+      <column name="vendor_part_num"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-377">
+    <createIndex indexName="vendor_part_number." tableName="invload_dbl" unique="true">
+      <column name="vendor_part_num"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-378">
+    <createIndex indexName="Index_vendor_part" tableName="invload_teledynamics" unique="true">
+      <column name="vendor_part_num"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-379">
+    <createIndex indexName="image_url" tableName="invload_wynit" unique="false">
+      <column name="product_image_url"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-380">
+    <createIndex indexName="vendor_part" tableName="invload_wynit" unique="true">
+      <column name="vendor_part_num"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-419">
+    <createIndex indexName="Index_2_ponum" tableName="purchase_orders" unique="true">
+      <column name="po_number"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-420">
+    <createIndex indexName="quickbooks" tableName="purchase_orders" unique="false">
+      <column name="quickbooks"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-466">
+    <createIndex indexName="name_UNIQUE" tableName="shipping_carrier" unique="true">
+      <column name="name"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-467">
+    <createIndex indexName="sripping_rate_min" tableName="shipping_rate" unique="false">
+      <column name="min_weight"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-474">
+    <createIndex indexName="name" tableName="vendor" unique="true">
+      <column name="name"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-475">
+    <createIndex indexName="vendor_category" tableName="vendor_category" unique="true">
+      <column name="vendor_id"/>
+      <column name="category_1"/>
+      <column name="category_2"/>
+      <column name="category_3"/>
+      <column name="category_4"/>
+      <column name="category_5"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-476">
+    <createIndex indexName="image1" tableName="vendor_item" unique="false">
+      <column name="image_1"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-477">
+    <createIndex indexName="vendor_part" tableName="vendor_item" unique="true">
+      <column name="vendor_part_num"/>
+      <column name="vendor_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-478">
+    <createIndex indexName="UNIQUE" tableName="vendor_manufacturer" unique="true">
+      <column name="vendor_id"/>
+      <column name="manufacturer_name"/>
+    </createIndex>
+  </changeSet>
+
+</databaseChangeLog>

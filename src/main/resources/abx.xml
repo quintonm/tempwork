@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <changeSet author="quinton (generated)" id="1337549115288-1">
+    <createTable tableName="abx_api_queue">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="method" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data" type="LONGTEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="status" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="retries" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="updated" type="DATETIME"/>
+      <column name="created" type="DATETIME"/>
+      <column name="return_code" type="MEDIUMTEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="custom1" type="VARCHAR(32)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-2">
+    <createTable tableName="abx_basket">
+      <column autoIncrement="true" name="auction_basket_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="uuid" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="auction_house_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="user_id" type="VARCHAR(96)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="site" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="listing_type" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="auction_item_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ext_id" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ext_key2" type="VARCHAR(16)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="auction_winner_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="listing_status" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="time_start" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="time_end" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="orders_id" type="INT"/>
+      <column name="ext_title" type="VARCHAR(91)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ext_desc" type="VARCHAR(255)"/>
+      <column defaultValueNumeric="1" name="quantity" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="currency" type="VARCHAR(4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="price_start" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="price_end" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="insurance" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="insurance_option" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="shipping_type" type="CHAR(1)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="shipping" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="shipping_global" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="shipping_zip" type="VARCHAR(10)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="shipping_country" type="VARCHAR(5)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="sales_tax" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="sales_tax_percent" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="products_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="LEAVE_FEEDBACK" name="feedback_left" type="VARCHAR(16)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="INVOICE" name="workflow_state" type="VARCHAR(16)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="workflow_state_change_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueBoolean="false" name="archived" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="payment_provider" type="VARCHAR(32)"/>
+      <column name="payment_transaction_id" type="VARCHAR(32)"/>
+      <column name="payment_timestamp" type="DATETIME"/>
+      <column name="payment_currency" type="CHAR(3)"/>
+      <column name="payment_amount" type="DECIMAL(11,4)"/>
+      <column name="payment_fee" type="DECIMAL(11,4)"/>
+      <column name="shipping_method_actual" type="VARCHAR(50)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-3">
+    <createTable tableName="abx_basket_attributes">
+      <column autoIncrement="true" name="abx_basket_attributes_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="auction_basket_id" type="INT"/>
+      <column defaultValue="0" name="products_options_id" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="products_options_value_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="products_options_value_text" type="BLOB"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-4">
+    <createTable tableName="abx_category_info">
+      <column defaultValueNumeric="0" name="categories_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="categories_site" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ebay_category1_id" type="VARCHAR(32)"/>
+      <column name="ebay_category2_id" type="VARCHAR(32)"/>
+      <column name="ebay_shop_category1_id" type="VARCHAR(32)"/>
+      <column name="ebay_shop_category2_id" type="VARCHAR(32)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-5">
+    <createTable tableName="abx_configuration">
+      <column autoIncrement="true" name="configuration_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="configuration_title" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="configuration_key" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="configuration_value" type="MEDIUMTEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="configuration_description" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="visible" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="sort_order" type="INT"/>
+      <column name="last_modified" type="DATETIME"/>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="date_added" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="use_function" type="VARCHAR(255)"/>
+      <column name="set_function" type="VARCHAR(255)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-6">
+    <createTable tableName="abx_feedback_state">
+      <column defaultValue="0" name="state_id" type="VARCHAR(16)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="language_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="label" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-7">
+    <createTable tableName="abx_fixed_shipping">
+      <column defaultValueNumeric="0" name="products_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0" name="is_enabled" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="shipping" type="DECIMAL(12,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="shipping_addl" type="DECIMAL(12,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="shipping_global" type="DECIMAL(12,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="shipping_global_addl" type="DECIMAL(12,4)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-8">
+    <createTable tableName="abx_houses">
+      <column autoIncrement="true" name="auction_house_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="auction_house_label" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="auction_house_desc" type="VARCHAR(96)"/>
+      <column name="auction_item_url" type="VARCHAR(255)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-9">
+    <createTable tableName="abx_items">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValueNumeric="0" name="seller_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="profile_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="uuid" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="label" type="VARCHAR(128)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueBoolean="false" name="type" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="title" type="VARCHAR(55)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="subtitle" type="VARCHAR(55)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="listing_type" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="item_specifics" type="MEDIUMTEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="site" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="city_state" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="country" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="region" type="VARCHAR(10)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="category1" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="category2" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="store_category" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0" name="duration" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0" name="quantity" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="price" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="bin_price" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="reserve_price" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="currency" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="payment_methods" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="paypal_email" type="VARCHAR(128)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="payment_description" type="TEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="sales_tax_state" type="VARCHAR(5)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="sales_tax_percent" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="sales_tax_sandh" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="shipping_type" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0" name="shipping_location" type="CHAR(1)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="shipping_pkg" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="shipping_svc" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="shipping" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="shipping_addl" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="shipping_global_svc" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="shipping_global" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="shipping_global_addl" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="shipping_postcode" type="VARCHAR(10)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.00" name="shipping_weight" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueBoolean="false" name="shipping_weight_unit" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="insurance_option" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0.0000" name="insurance" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="return_policy" type="TEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="extra_private" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="extra_bold" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="extra_highlight" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0" name="extra_gallery" type="CHAR(1)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="extra_gallery_url" type="VARCHAR(128)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="extra_category_featured" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="extra_homepage_featured" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="counter" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="products_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="LONGTEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="last_modified" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture1_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture2_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture3_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture4_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture5_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture6_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture7_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="picture8_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="app_data" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="version" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="object_info" type="LONGTEXT"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-10">
+    <createTable tableName="abx_listings">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="user_id" type="VARCHAR(96)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="uuid" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="parent_uuid" type="VARCHAR(32)"/>
+      <column name="item_uuid" type="VARCHAR(32)"/>
+      <column defaultValueNumeric="0" name="profile_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="auction_house_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="site" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="listing_type" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ext_id" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="ext_title" type="VARCHAR(55)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="is_buy_it_now" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="start_time" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="end_time" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="quantity" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="quantity_sold" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="currency" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="start_price" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="current_price" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="status" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="version" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="listing_fee" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="app_data" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="error_code" type="VARCHAR(10)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="error_text" type="MEDIUMTEXT"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-11">
+    <createTable tableName="abx_macros_custom">
+      <column defaultValueNumeric="0" name="products_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="custom1" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom2" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom3" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom4" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom5" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom6" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom7" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom8" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom9" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom10" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-12">
+    <createTable tableName="abx_products_extra_info">
+      <column defaultValueNumeric="0" name="products_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="exclude_auction" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="exclude_fixed" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="exclude_store" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom1" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom2" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom3" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom4" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom5" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom6" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom7" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom8" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom9" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="custom10" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-13">
+    <createTable tableName="abx_schedule_info">
+      <column defaultValue="" name="uuid" type="VARCHAR(32)">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="trigger_state" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="trigger_type" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="date_first" type="DATETIME"/>
+      <column name="date_end" type="DATETIME"/>
+      <column name="date_next" type="DATETIME"/>
+      <column defaultValueNumeric="0" name="repeat_total" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="repeat_count" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-14">
+    <createTable tableName="abx_seller_info">
+      <column defaultValueNumeric="0" name="seller_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="user_id" type="VARCHAR(96)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="notify_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="checkout_url" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="token_status" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-15">
+    <createTable tableName="abx_sites">
+      <column defaultValueNumeric="0" name="auction_house_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="site" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="url" type="VARCHAR(96)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-16">
+    <createTable tableName="abx_uploads">
+      <column autoIncrement="true" name="id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column defaultValue="" name="uuid" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="listing_uuid" type="VARCHAR(32)"/>
+      <column defaultValueNumeric="0" name="seller_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="label" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="title" type="VARCHAR(55)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="listing_type" type="CHAR(2)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="site" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="0" name="duration" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="quantity" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="price" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0.0000" name="bin_price" type="DECIMAL(11,4)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="currency" type="CHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="scheduled_start" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="scheduled_info" type="TEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="version" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="action" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="upload_status" type="CHAR(1)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="object_info" type="TEXT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="last_modified" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueDate="0002-11-30T00:00:00.0" name="date_added" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-17">
+    <createTable tableName="abx_winners">
+      <column autoIncrement="true" name="auction_winner_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="ext_customer_id" type="VARCHAR(96)"/>
+      <column defaultValue="" name="ext_email_address" type="VARCHAR(96)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="name" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="street1" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="street2" type="VARCHAR(64)"/>
+      <column defaultValue="" name="city" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="state" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="zip" type="VARCHAR(12)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="country" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="phone" type="VARCHAR(32)"/>
+      <column defaultValueNumeric="0" name="score" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="customers_id" type="INT"/>
+      <column defaultValueBoolean="false" name="is_anonymous" type="BIT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-18">
+    <createTable tableName="abx_workflow_state">
+      <column defaultValue="0" name="state_id" type="VARCHAR(16)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="listing_status" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="language_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValueNumeric="0" name="sort_order" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="label" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="" name="next_state_id" type="VARCHAR(16)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="quinton (generated)" id="1337549115288-221">
+    <addPrimaryKey columnNames="categories_id, categories_site" tableName="abx_category_info"/>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-222">
+    <addPrimaryKey columnNames="state_id, language_id" tableName="abx_feedback_state"/>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-223">
+    <addPrimaryKey columnNames="auction_house_id, site" tableName="abx_sites"/>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-224">
+    <addPrimaryKey columnNames="state_id, listing_status, language_id" tableName="abx_workflow_state"/>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-302">
+    <createIndex indexName="custom1" tableName="abx_api_queue" unique="false">
+      <column name="custom1"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-303">
+    <createIndex indexName="method" tableName="abx_api_queue" unique="false">
+      <column name="method"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-304">
+    <createIndex indexName="status" tableName="abx_api_queue" unique="false">
+      <column name="status"/>
+      <column name="retries"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-305">
+    <createIndex indexName="auction_winner_id" tableName="abx_basket" unique="false">
+      <column name="auction_winner_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-306">
+    <createIndex indexName="ext_id" tableName="abx_basket" unique="false">
+      <column name="ext_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-307">
+    <createIndex indexName="ext_key" tableName="abx_basket" unique="true">
+      <column name="auction_house_id"/>
+      <column name="ext_id"/>
+      <column name="ext_key2"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-308">
+    <createIndex indexName="listing_status" tableName="abx_basket" unique="false">
+      <column name="listing_status"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-309">
+    <createIndex indexName="payment_transaction_id" tableName="abx_basket" unique="false">
+      <column name="payment_transaction_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-310">
+    <createIndex indexName="products_id" tableName="abx_basket" unique="false">
+      <column name="products_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-311">
+    <createIndex indexName="site" tableName="abx_basket" unique="false">
+      <column name="site"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-312">
+    <createIndex indexName="time_end" tableName="abx_basket" unique="false">
+      <column name="time_end"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-313">
+    <createIndex indexName="user_id" tableName="abx_basket" unique="false">
+      <column name="user_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-314">
+    <createIndex indexName="uuid" tableName="abx_basket" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-315">
+    <createIndex indexName="idx_abx_basket_attribues" tableName="abx_basket_attributes" unique="false">
+      <column name="auction_basket_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-316">
+    <createIndex indexName="uuid" tableName="abx_items" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-317">
+    <createIndex indexName="auction_house_id" tableName="abx_listings" unique="false">
+      <column name="auction_house_id"/>
+      <column name="ext_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-318">
+    <createIndex indexName="end_time" tableName="abx_listings" unique="false">
+      <column name="end_time"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-319">
+    <createIndex indexName="item_uuid" tableName="abx_listings" unique="false">
+      <column name="item_uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-320">
+    <createIndex indexName="parent_uuid" tableName="abx_listings" unique="false">
+      <column name="parent_uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-321">
+    <createIndex indexName="profile_id" tableName="abx_listings" unique="false">
+      <column name="profile_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-322">
+    <createIndex indexName="quantity_sold" tableName="abx_listings" unique="false">
+      <column name="quantity_sold"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-323">
+    <createIndex indexName="seller_id" tableName="abx_listings" unique="false">
+      <column name="user_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-324">
+    <createIndex indexName="status" tableName="abx_listings" unique="false">
+      <column name="status"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-325">
+    <createIndex indexName="uuid" tableName="abx_listings" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-326">
+    <createIndex indexName="exclude_auction" tableName="abx_products_extra_info" unique="false">
+      <column name="exclude_auction"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-327">
+    <createIndex indexName="exclude_fixed" tableName="abx_products_extra_info" unique="false">
+      <column name="exclude_fixed"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-328">
+    <createIndex indexName="exclude_store" tableName="abx_products_extra_info" unique="false">
+      <column name="exclude_store"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-329">
+    <createIndex indexName="date_end" tableName="abx_schedule_info" unique="false">
+      <column name="date_end"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-330">
+    <createIndex indexName="date_first" tableName="abx_schedule_info" unique="false">
+      <column name="date_first"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-331">
+    <createIndex indexName="date_next" tableName="abx_schedule_info" unique="false">
+      <column name="date_next"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-332">
+    <createIndex indexName="trigger_state" tableName="abx_schedule_info" unique="false">
+      <column name="trigger_state"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-333">
+    <createIndex indexName="trigger_type" tableName="abx_schedule_info" unique="false">
+      <column name="trigger_type"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-334">
+    <createIndex indexName="user_id" tableName="abx_seller_info" unique="true">
+      <column name="user_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-335">
+    <createIndex indexName="action" tableName="abx_uploads" unique="false">
+      <column name="action"/>
+      <column name="uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-336">
+    <createIndex indexName="uuid" tableName="abx_uploads" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-337">
+    <createIndex indexName="customers_id" tableName="abx_winners" unique="false">
+      <column name="customers_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-338">
+    <createIndex indexName="ext_customer_id" tableName="abx_winners" unique="false">
+      <column name="ext_customer_id"/>
+    </createIndex>
+  </changeSet>
+  <changeSet author="quinton (generated)" id="1337549115288-339">
+    <createIndex indexName="ext_email_address" tableName="abx_winners" unique="true">
+      <column name="ext_email_address"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>
