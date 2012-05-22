@@ -4,6 +4,7 @@
 .idea
 *.iml
 atlassian-ide-plugin.xml
+target
 
 #################
 ## other files
