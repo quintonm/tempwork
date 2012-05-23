@@ -1013,7 +1013,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-26">
         <createTable tableName="affiliate_banners_history">
-            <column autoIncrement="true" name="affiliate_banners_history_id" type="INT">
+            <column name="affiliate_banners_history_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="affiliate_banners_products_id" type="INT">
@@ -1281,7 +1281,7 @@
             </column>
             <column name="brand" type="VARCHAR(50)"/>
             <column name="description" type="TEXT"/>
-            <column name="item_price" type="DECIMAL UNSIGNED(10,2)"/>
+            <column name="item_price" type="DECIMAL (10,2)"/>
             <column name="condition_note" type="TEXT"/>
             <column name="item_type" type="VARCHAR(45)">
                 <constraints nullable="false"/>
@@ -1371,7 +1371,7 @@
             <column defaultValueDate="0002-11-30T00:00:00.0" name="deposit_date" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueNumeric="0.00" name="total_amount" type="DECIMAL UNSIGNED(10,2)">
+            <column defaultValueNumeric="0.00" name="total_amount" type="DECIMAL (10,2)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="" name="currency" type="VARCHAR(45)">
@@ -1561,7 +1561,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-49">
         <createTable tableName="articles_description">
-            <column autoIncrement="true" name="articles_id" type="INT">
+            <column name="articles_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="1" name="language_id" type="INT">
@@ -1809,7 +1809,7 @@
     <changeSet author="author" id="1337705824610-65">
         <createTable tableName="card_blacklist">
             <column autoIncrement="true" name="blacklist_id" type="INT">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="card_blacklist_pk"/>
             </column>
             <column defaultValue="" name="blacklist_card_number" type="VARCHAR(20)">
                 <constraints nullable="false"/>
@@ -2288,7 +2288,7 @@
             <column defaultValueNumeric="0" name="customers_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="products_id" type="TINYTEXT(255)">
+            <column name="products_id" type="TINYTEXT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="customers_basket_quantity" type="INT">
@@ -2308,7 +2308,7 @@
             <column defaultValueNumeric="0" name="customers_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="products_id" type="TINYTEXT(255)">
+            <column name="products_id" type="TINYTEXT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="products_options_id" type="INT">
@@ -2466,7 +2466,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-97">
         <createTable tableName="events_calendar">
-            <column autoIncrement="true" name="event_id" type="INT">
+            <column name="event_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="1" name="language_id" type="INT">
@@ -2689,7 +2689,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-112">
         <createTable tableName="information">
-            <column autoIncrement="true" name="information_id" type="TINYINT UNSIGNED">
+            <column name="information_id" type="TINYINT UNSIGNED">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="'1'" name="visible" type="enum('1','0')">
@@ -3079,7 +3079,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-126">
         <createTable tableName="links_description">
-            <column autoIncrement="true" name="links_id" type="INT">
+            <column name="links_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="1" name="language_id" type="INT">
@@ -3305,7 +3305,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-134">
         <createTable tableName="orders_pay_methods">
-            <column autoIncrement="true" name="pay_methods_id" type="INT">
+            <column name="pay_methods_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="1" name="pay_method_language" type="INT">
@@ -3458,7 +3458,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-139">
         <createTable tableName="orders_ship_methods">
-            <column autoIncrement="true" name="ship_methods_id" type="INT">
+            <column name="ship_methods_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="1" name="ship_method_language" type="INT">
@@ -3659,7 +3659,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-150">
         <createTable tableName="paypal">
-            <column autoIncrement="true" name="paypal_id" type="INT">
+            <column name="paypal_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="" name="txn_type" type="VARCHAR(10)">
@@ -3760,7 +3760,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-151">
         <createTable tableName="paypal_20070403093711">
-            <column autoIncrement="true" name="paypal_id" type="INT">
+            <column name="paypal_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="" name="txn_type" type="VARCHAR(10)">
@@ -4139,7 +4139,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-158">
         <createTable tableName="products_description">
-            <column autoIncrement="true" name="products_id" type="INT">
+            <column name="products_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="1" name="language_id" type="INT">
@@ -4314,7 +4314,7 @@
             <column defaultValueNumeric="0" name="categories_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+            <column name="id" type="INT UNSIGNED">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -4328,7 +4328,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="products_extra_fields_value" type="VARCHAR(64)"/>
-            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+            <column name="id" type="INT UNSIGNED">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -4435,7 +4435,7 @@
             <column autoIncrement="true" name="qbi_config_id" type="SMALLINT UNSIGNED">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column defaultValueNumeric="0.00" name="qbi_config_ver" type="DECIMAL UNSIGNED(6,2)">
+            <column defaultValueNumeric="0.00" name="qbi_config_ver" type="DECIMAL (6,2)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="US" name="qbi_qb_iso2" type="VARCHAR(3)">
@@ -4861,7 +4861,7 @@
             <column defaultValue="" name="qbi_itemsqb_accnt" type="VARCHAR(40)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueNumeric="0.00" name="qbi_itemsqb_price" type="DECIMAL UNSIGNED(8,2)">
+            <column defaultValueNumeric="0.00" name="qbi_itemsqb_price" type="DECIMAL (8,2)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="" name="qbi_itemsqb_invitemtype" type="VARCHAR(16)">
@@ -4888,7 +4888,7 @@
             <column defaultValue="" name="qbi_itemsqb_prefvend" type="VARCHAR(40)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueNumeric="0.00" name="qbi_itemsqb_cost" type="DECIMAL UNSIGNED(8,2)">
+            <column defaultValueNumeric="0.00" name="qbi_itemsqb_cost" type="DECIMAL (8,2)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="qbi_itemsqb_qnty" type="INT UNSIGNED">
@@ -5000,13 +5000,13 @@
             <column defaultValue="" name="prod_products_accnt" type="VARCHAR(64)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueNumeric="0.00" name="prod_prod_cost" type="DECIMAL UNSIGNED(9,2)">
+            <column defaultValueNumeric="0.00" name="prod_prod_cost" type="DECIMAL (9,2)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="prod_prod_quan" type="SMALLINT UNSIGNED">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueNumeric="0.00" name="prod_total_cost" type="DECIMAL UNSIGNED(9,2)">
+            <column defaultValueNumeric="0.00" name="prod_total_cost" type="DECIMAL (9,2)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueComputed="CURRENT_TIMESTAMP" name="updated" type="TIMESTAMP">
@@ -6061,7 +6061,7 @@
             <column defaultValueNumeric="0.00" name="tare_weight" type="DECIMAL(5,2)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueNumeric="0.000" name="max_box_weight" type="DECIMAL UNSIGNED(15,3)">
+            <column defaultValueNumeric="0.000" name="max_box_weight" type="DECIMAL (15,3)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="percent_tare_weight" type="INT">
@@ -6175,6 +6175,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-225">
         <addPrimaryKey columnNames="affiliate_banners_history_id, affiliate_banners_products_id" tableName="affiliate_banners_history"/>
+        <addAutoIncrement tableName="affiliate_banners_history" columnName="affiliate_banners_history_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-226">
         <addPrimaryKey columnNames="affiliate_payment_status_id, affiliate_language_id" tableName="affiliate_payment_status"/>
@@ -6187,6 +6188,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-229">
         <addPrimaryKey columnNames="articles_id, language_id" tableName="articles_description"/>
+        <addAutoIncrement tableName="articles_description" columnName="articles_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-230">
         <addPrimaryKey columnNames="articles_id, topics_id" tableName="articles_to_topics"/>
@@ -6199,6 +6201,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-233">
         <addPrimaryKey columnNames="event_id, language_id" tableName="events_calendar"/>
+		    <addAutoIncrement tableName="events_calendar" columnName="event_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-234">
         <addPrimaryKey columnNames="categories_id, language_id" tableName="faq_categories_description"/>
@@ -6220,6 +6223,7 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-240">
         <addPrimaryKey columnNames="links_id, language_id" tableName="links_description"/>
+		    <addAutoIncrement tableName="links_description" columnName="links_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-241">
         <addPrimaryKey columnNames="links_status_id, language_id" tableName="links_status"/>
@@ -6232,12 +6236,14 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-244">
         <addPrimaryKey columnNames="pay_methods_id, pay_method_language" tableName="orders_pay_methods"/>
+		    <addAutoIncrement tableName="orders_pay_methods" columnName="pay_methods_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-245">
         <addPrimaryKey columnNames="txn_signature, orders_id" tableName="orders_session_info"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-246">
         <addPrimaryKey columnNames="ship_methods_id, ship_method_language" tableName="orders_ship_methods"/>
+        <addAutoIncrement tableName="orders_ship_methods" columnName="ship_methods_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-247">
         <addPrimaryKey columnNames="orders_status_id, language_id" tableName="orders_status"/>
@@ -6253,15 +6259,18 @@
     </changeSet>
     <changeSet author="author" id="1337705824610-251">
         <addPrimaryKey columnNames="paypal_id, txn_id" tableName="paypal"/>
+		    <addAutoIncrement tableName="paypal" columnName="paypal_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-252">
         <addPrimaryKey columnNames="paypal_id, txn_id" tableName="paypal_20070403093711"/>
+		    <addAutoIncrement tableName="paypal_20070403093711" columnName="paypal_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-253">
         <addPrimaryKey columnNames="paypal_id, item_number" tableName="paypal_auction"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-254">
         <addPrimaryKey columnNames="products_id, language_id" tableName="products_description"/>
+		    <addAutoIncrement tableName="products_description" columnName="products_id" columnDataType="INT"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-255">
         <addPrimaryKey columnNames="customers_group_id, products_id" tableName="products_groups"/>
@@ -6990,6 +6999,7 @@
         <createIndex indexName="id_idx" tableName="products_to_categories" unique="true">
             <column name="id"/>
         </createIndex>
+    	<addAutoIncrement tableName="products_to_categories" columnName="id" columnDataType="INT UNSIGNED"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-415">
         <createIndex indexName="idx_categories_id" tableName="products_to_categories" unique="false">
@@ -7001,6 +7011,7 @@
         <createIndex indexName="id_idx" tableName="products_to_products_extra_fields" unique="true">
             <column name="id"/>
         </createIndex>
+		<addAutoIncrement tableName="products_to_products_extra_fields" columnName="id" columnDataType="INT UNSIGNED"/>
     </changeSet>
     <changeSet author="author" id="1337705824610-417">
         <createIndex indexName="ppef_values" tableName="products_to_products_extra_fields" unique="false">
